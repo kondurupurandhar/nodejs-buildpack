@@ -19,6 +19,18 @@ url_to_dependency_map:
   version: "$1"
 dependencies:
 - name: node
+  version: 0.10.45
+  uri: https://buildpacks.cloudfoundry.org/concourse-binaries/node/node-0.10.45-linux-x64.tgz
+  md5: b6607379e8cdcfa3763acc12fe40cef9
+  cf_stacks:
+  - cflinuxfs2
+- name: node
+  version: 0.10.46
+  uri: https://buildpacks.cloudfoundry.org/concourse-binaries/node/node-0.10.46-linux-x64.tgz
+  md5: 2e02c3350a0b81e8b501ef3ea637a93b
+  cf_stacks:
+  - cflinuxfs2
+- name: node
   version: 0.12.16
   uri: https://buildpacks.cloudfoundry.org/concourse-binaries/node/node-0.12.16-linux-x64.tgz
   md5: 6ecfcbcf63abc5b3008373818bd28a93
