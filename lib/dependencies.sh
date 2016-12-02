@@ -17,8 +17,13 @@ install_node_modules() {
            module_name=`echo $a | awk -F':' '{print $1}'`
            version=`echo $a | awk -F':' '{print $1}'`
            echo $line
-           npm install --unsafe-perm --userconfig ${module}@${version}
-       fi
+           if [ "$version" == "*" ]
+           then
+              npm install --unsafe-perm --userconfig ${module}
+           else
+              npm install --unsafe-perm --userconfig ${module}@${version}
+           fi
+           
     done
     #npm install --unsafe-perm --userconfig $build_dir/.npmrc 2>&1
   else
