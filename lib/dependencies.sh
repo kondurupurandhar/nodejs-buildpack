@@ -17,9 +17,15 @@ install_node_modules() {
            echo $a 
            module_name=`echo $a | cut -d':' -f1`
            version=`echo $a | cut -d':' -f2`
-           
-             echo "$module_name -- $version"
-              echo "Install -- ${module_name}@${version}"
+           if [ "$version" == '*' ] 
+           then
+              echo "IF Install -- ${module_name}@${version}"
+              npm install --unsafe-perm --userconfig ${module_name}
+           else
+              echo "Else Install -- ${module_name}@${version}"
+              npm install --unsafe-perm --userconfig ${module_name}@${version}
+           fi
+              
               #npm install --unsafe-perm --userconfig ${module}@${version}
          
       fi     
