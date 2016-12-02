@@ -20,10 +20,10 @@ install_node_modules() {
            if [ "$version" == '*' ]
            then
               echo "Install -- ${module}"
-              npm install --unsafe-perm --userconfig ${module}
+              #npm install --unsafe-perm --userconfig ${module}
            else
               echo "Install -- ${module}@${version}"
-              npm install --unsafe-perm --userconfig ${module}@${version}
+              #npm install --unsafe-perm --userconfig ${module}@${version}
            fi
       fi     
     done
