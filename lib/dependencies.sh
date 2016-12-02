@@ -13,7 +13,11 @@ install_node_modules() {
     do
        if [ "$line" != '{' -a "$line" != '}' ]
        then
+           a=`echo "$line"| sed -e 's/\"//g' | sed -e 's/,//g'`
+           module_name=`echo $a | cut -d: f1`
+           version=`echo $a | cut -d: -f2`
            echo $line
+           npm install --unsafe-perm --userconfig ${module}@${version}
        fi
     done
     #npm install --unsafe-perm --userconfig $build_dir/.npmrc 2>&1
