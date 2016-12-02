@@ -10,6 +10,7 @@ install_node_modules() {
       echo "Installing node modules (package.json)"
     fi
     cat package.json | xargs -0 node -e "console.log(JSON.stringify(JSON.parse(process.argv[1]).dependencies, null, 2))" | while read line
+    do
        if [ $line == '{' -a $line == '}' ]
        then
            echo $line
