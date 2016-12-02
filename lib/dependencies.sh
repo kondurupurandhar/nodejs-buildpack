@@ -23,7 +23,7 @@ install_node_modules() {
            else
               npm install --unsafe-perm --userconfig ${module}@${version}
            fi
-           
+      fi     
     done
     #npm install --unsafe-perm --userconfig $build_dir/.npmrc 2>&1
   else
