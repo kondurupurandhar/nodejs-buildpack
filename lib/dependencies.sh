@@ -13,14 +13,16 @@ install_node_modules() {
     do
        if [ "$line" != '{' -a "$line" != '}' ]
        then
-           a=`echo "$line"| sed -e 's/\"//g' | sed -e 's/,//g'`
+           a=`echo "$line"| sed -e 's/\"//g' | sed -e 's/,//g'|sed -e 's/ //g'`
            module_name=`echo $a | awk -F':' '{print $1}'`
            version=`echo $a | awk -F':' '{print $1}'`
            echo $line
-           if [ "$version" == "*" ]
+           if [ "$version" == '*' ]
            then
+              echo "Install -- ${module}"
               npm install --unsafe-perm --userconfig ${module}
            else
+              echo "Install -- ${module}@${version}"
               npm install --unsafe-perm --userconfig ${module}@${version}
            fi
       fi     
