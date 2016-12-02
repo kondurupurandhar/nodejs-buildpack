@@ -9,28 +9,7 @@ install_node_modules() {
     else
       echo "Installing node modules (package.json)"
     fi
-    cat package.json | xargs -0 node -e "console.log(JSON.stringify(JSON.parse(process.argv[1]).dependencies, null, 2))" | while read line
-    do
-       if [ "$line" != '{' -a "$line" != '}' ]
-       then
-           a=`echo "$line"| sed -e 's/\"//g' | sed -e 's/,//g'|sed -e 's/ //g'`
-           echo $a 
-           module_name=`echo $a | cut -d':' -f1`
-           version=`echo $a | cut -d':' -f2`
-           if [ "$version" == '*' ] 
-           then
-              echo "IF Install -- ${module_name}@${version}"
-              npm install --unsafe-perm ${module_name}
-              #npm install --unsafe-perm --userconfig ${module_name}
-           else
-              echo "Else Install -- ${module_name}@${version}"
-              npm install --unsafe-perm ${module_name}@${version}
-           fi
-              
-              #npm install --unsafe-perm --userconfig ${module}@${version}
-         
-      fi     
-    done
+    npm install
     #npm install --unsafe-perm --userconfig $build_dir/.npmrc 2>&1
   else
     echo "Skipping (no package.json)"
