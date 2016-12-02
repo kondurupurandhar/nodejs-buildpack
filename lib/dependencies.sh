@@ -14,9 +14,10 @@ install_node_modules() {
        if [ "$line" != '{' -a "$line" != '}' ]
        then
            a=`echo "$line"| sed -e 's/\"//g' | sed -e 's/,//g'|sed -e 's/ //g'`
+           echo $a | cut -d':' -f1
            module_name=`echo $a | awk -F':' '{print $1}'`
-           version=`echo $a | awk -F':' '{print $1}'`
-           echo $line
+           version=`echo $a | awk -F':' '{print $2}'`
+           
            if [ "$version" == '*' ]
            then
               echo "Install -- ${module}"
