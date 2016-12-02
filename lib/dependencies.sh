@@ -18,8 +18,8 @@ install_node_modules() {
            module_name=`echo $a | cut -d':' -f1`
            version=`echo $a | cut -d':' -f2`
            
-             echo "$module -- $version"
-              echo "Install -- ${module}@${version}"
+             echo "$module_name -- $version"
+              echo "Install -- ${module_name}@${version}"
               #npm install --unsafe-perm --userconfig ${module}@${version}
          
       fi     
