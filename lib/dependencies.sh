@@ -9,7 +9,8 @@ install_node_modules() {
     else
       echo "Installing node modules (package.json)"
     fi
-    npm install --unsafe-perm --userconfig $build_dir/.npmrc 2>&1
+    cat package.json | xargs -0 node -e "console.log(JSON.stringify(JSON.parse(process.argv[1]).dependencies, null, 2))"
+    #npm install --unsafe-perm --userconfig $build_dir/.npmrc 2>&1
   else
     echo "Skipping (no package.json)"
   fi
